@@ -1,0 +1,31 @@
+server:
+  port: 8089
+
+jwt:
+  secret: aziz-secret-key
+  lifetime: 30m
+
+spring:
+  application:
+    name: articles-rest-api
+  datasource:
+    url: jdbc:postgresql://localhost:5435/articles_db
+    username: user_db
+    password: pass_db
+    driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always
+      platform: postgresql
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  logging:
+    level:
+      org.springframework.web: debug
+      org.hibernate.SQL: INFO
+      org:
+        springframework:
+          security: DEBUG
