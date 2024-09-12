@@ -45,8 +45,6 @@ public class ArticleService {
     }
 
     public ArticleViewDto saveArticle(ArticleDto articleDto, UserDto userDto) {
-        System.out.println("User id: " + userDto.getId());
-        System.out.println(articleDto);
         User user = userRepository.findById(userDto.getId())
                 .orElseThrow(() -> new AppException("User Not Found", HttpStatus.NOT_FOUND));
         Article article = Article.builder()
