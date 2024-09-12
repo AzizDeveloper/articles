@@ -1,22 +1,26 @@
 package dev.aziz.articles.dtos;
 
-import dev.aziz.articles.entities.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Data
-public class UserSummaryDto {
+public class ArticleViewDto {
 
     private Long id;
-    private String firstName;
-    private String lastName;
+
+    private String title;
+
     private String username;
-    private String email;
-    private Role role;
+
+    private String content;
+
+    private LocalDate localDate;
 
 }

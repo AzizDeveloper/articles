@@ -2,12 +2,8 @@ package dev.aziz.articles.mappers;
 
 import dev.aziz.articles.dtos.SignUpDto;
 import dev.aziz.articles.dtos.UserDto;
-import dev.aziz.articles.dtos.UserSummaryDto;
 import dev.aziz.articles.entities.User;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class UserMapper {
@@ -38,39 +34,6 @@ public class UserMapper {
             user.username(signUpDto.getUsername());
             return user.build();
         }
-    }
-
-    public UserSummaryDto toUserSummaryDto(User user) {
-        if (user == null) {
-            return null;
-        } else {
-            UserSummaryDto.UserSummaryDtoBuilder userSummaryDto = UserSummaryDto.builder();
-            userSummaryDto.id(user.getId());
-            userSummaryDto.firstName(user.getFirstName());
-            userSummaryDto.lastName(user.getLastName());
-            userSummaryDto.email(user.getEmail());
-            userSummaryDto.username(user.getUsername());
-            userSummaryDto.role(user.getRole());
-            return userSummaryDto.build();
-        }
-    }
-
-    public List<UserDto> usersToUserDtos(List<User> users) {
-        if (users == null) {
-            return null;
-        }
-        return users.stream()
-                .map(this::toUserDto)
-                .collect(Collectors.toList());
-    }
-
-    public List<UserSummaryDto> usersToUserSummaryDtos(List<User> users) {
-        if (users == null) {
-            return null;
-        }
-        return users.stream()
-                .map(this::toUserSummaryDto)
-                .collect(Collectors.toList());
     }
 
 }
